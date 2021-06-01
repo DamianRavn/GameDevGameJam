@@ -1,0 +1,977 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "GameDevGameJam Win32 Debug Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Debug Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win32 Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Debug Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 DebugGame Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win32 DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 DebugGame Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Development Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Development Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win32 Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Development Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Shipping Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Shipping Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win32 Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Shipping Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Test Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Test Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win32 Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win32 Test Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win32",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Debug Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Debug Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win64 Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Debug Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 DebugGame Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win64 DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 DebugGame Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Development Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Development Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win64 Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Development Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Shipping Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Shipping Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win64 Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Shipping Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Test Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Test Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam Win64 Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam Win64 Test Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"Win64",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Debug Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Debug Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam IOS Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Debug Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS DebugGame Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam IOS DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS DebugGame Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Development Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Development Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam IOS Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Development Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Shipping Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Shipping Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam IOS Shipping Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Shipping Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Shipping",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Test Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Test Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJam IOS Test Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJam IOS Test Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJam",
+				"IOS",
+				"Test",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 Debug Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 Debug Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJamEditor Win64 Debug Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 Debug Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"Debug",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 DebugGame Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 DebugGame Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJamEditor Win64 DebugGame Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 DebugGame Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"DebugGame",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 Development Build",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 Development Rebuild",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Build.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"dependsOn": [
+				"GameDevGameJamEditor Win64 Development Clean"
+			],
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		},
+		{
+			"label": "GameDevGameJamEditor Win64 Development Clean",
+			"group": "build",
+			"command": "Engine\\Build\\BatchFiles\\Clean.bat",
+			"args": [
+				"GameDevGameJamEditor",
+				"Win64",
+				"Development",
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-waitmutex"
+			],
+			"problemMatcher": "$msCompile",
+			"type": "shell",
+			"options": {
+				"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+			}
+		}
+	]
+}

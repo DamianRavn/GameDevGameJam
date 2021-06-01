@@ -1,0 +1,67 @@
+[
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJam.Build.cs",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJam.cpp",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJam.h",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJamCharacter.cpp",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJamCharacter.h",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJamGameMode.cpp",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GameDevGameJamGameMode.h",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GASAbilitySystemComponent.cpp",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GASAbilitySystemComponent.h",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GASAttributeSet.cpp",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GASAttributeSet.h",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GASGameplayAbility.cpp",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "E:\\\\Libraries\\\\Documents\\\\GitHub\\\\GameDevGameJam\\\\Source\\\\GameDevGameJam\\\\GASGameplayAbility.h",
+		"command": "cl.exe @\"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\.vscode\\compileCommands_GameDevGameJam\\GameDevGameJam.199.rsp\"",
+		"directory": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Source"
+	}
+]

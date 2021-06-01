@@ -1,0 +1,137 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "GameDevGameJam Attach",
+			"type": "cppvsdbg",
+			"request": "attach",
+			"processId": "${command:pickProcess}",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		
+
+		{
+			"name": "GameDevGameJam (Debug)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJam Win64 Debug Build",
+			"program": "E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\Binaries\\Win64\\UE4-Win64-Debug.exe",
+			"args": [
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJam (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJam Win64 DebugGame Build",
+			"program": "E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
+			"args": [
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJam (Development)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJam Win64 Development Build",
+			"program": "E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\Binaries\\Win64\\UE4.exe",
+			"args": [
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJam (Shipping)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJam Win64 Shipping Build",
+			"program": "E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
+			"args": [
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJam (Test)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJam Win64 Test Build",
+			"program": "E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\Binaries\\Win64\\UE4-Win64-Test.exe",
+			"args": [
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJamEditor (Debug)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJamEditor Win64 Debug Build",
+			"program": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe",
+			"args": [
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject"
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJamEditor (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJamEditor Win64 DebugGame Build",
+			"program": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Binaries\\Win64\\UE4Editor-Win64-DebugGame.exe",
+			"args": [
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject"
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "GameDevGameJamEditor (Development)",
+			"request": "launch",
+			"preLaunchTask": "GameDevGameJamEditor Win64 Development Build",
+			"program": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Binaries\\Win64\\UE4Editor.exe",
+			"args": [
+				"E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject"
+			],
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "Generate Project Files",
+			"type": "clr",
+			"request": "launch",
+			"program": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26\\Engine\\Binaries\\DotNET\\UnrealBuildTool.exe",
+			"console": "externalTerminal",
+			"args": [
+				"-projectfiles",
+				"-vscode",
+				"-project=E:\\Libraries\\Documents\\GitHub\\GameDevGameJam\\GameDevGameJam.uproject",
+				"-game",
+				"-engine"
+			],
+			"internalConsoleOptions": "openOnSessionStart",
+			"cwd": "D:\\GameEngines\\Unreal\\Epic Games\\UE_4.26"
+		}
+	]
+}
