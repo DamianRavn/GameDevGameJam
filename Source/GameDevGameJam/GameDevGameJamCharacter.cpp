@@ -1,230 +1,220 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "GameDevGameJamCharacter.h"
-#include "HeadMountedDisplayFunctionLibrary.h"
-#include "Camera/CameraComponent.h"
-#include "Components/CapsuleComponent.h"
-#include "Components/InputComponent.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/Controller.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "GASAbilitySystemComponent.h"
-#include "GASAttributeSet.h"
 #include "GASGameplayAbility.h"
-#include <GameplayEffectTypes.h>
-#include "Engine/AssetManager.h"
+#include "AbilitySystemGlobals.h"
+#include "Net/UnrealNetwork.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AGameDevGameJamCharacter
 
 AGameDevGameJamCharacter::AGameDevGameJamCharacter()
 {
-	// Set size for collision capsule
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
-
-	// set our turn rates for input
-	BaseTurnRate = 45.f;
-	BaseLookUpRate = 45.f;
-
-	// Don't rotate when the controller rotates. Let that just affect the camera.
-	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
-	bUseControllerRotationRoll = false;
-
-	// Configure character movement
-	GetCharacterMovement()->bOrientRotationToMovement = true; // Character moves in the direction of input...	
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); // ...at this rotation rate
-	GetCharacterMovement()->JumpZVelocity = 600.f;
-	GetCharacterMovement()->AirControl = 0.2f;
-
-	//Asset Data
-	//Weapon = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Weapon Mesh"));
-
 	//GAS
 	AbilitySystemComponent = CreateDefaultSubobject<UGASAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 	AbilitySystemComponent->SetIsReplicated(true);
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
-	Attributes = CreateDefaultSubobject<UGASAttributeSet>(TEXT("Attributes"));
+	AttributeSet = CreateDefaultSubobject<UGASAttributeSet>(TEXT("Attributes"));
+
+	CharacterLevel = 1;
+	bAbilitiesInitialized = false;
 }
-
-// void AGameDevGameJamCharacter::BeginPlay() 
-// {
-// 	if (CurrentWeaponDefinition)
-// 	{
-// 		EquipWeapon(CurrentWeaponDefinition);
-// 	}
-// 	else
-// 	{
-// 		UE_LOG(LogTemp, Warning, TEXT("CurrentWeapon is null"));
-// 	}
-
-// 	Weapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("Sword"));
-// 	Super::BeginPlay();
-// }
-
-// void AGameDevGameJamCharacter::EquipWeapon(const UWeaponDefinition* WeaponDef) 
-// {
-// 	UStaticMesh* mesh = WeaponDef->Mesh.LoadSynchronous();
-// 	Weapon->SetStaticMesh(mesh);
-// 	CurrentWeaponDefinition = WeaponDef;
-// }
-
-// void AGameDevGameJamCharacter::EquipWeaponFromID(const FPrimaryAssetId& id) 
-// {
-// 	// Get the global Asset Manager
-//     UAssetManager& AssetManager = UAssetManager::Get();
-// 	TSharedPtr<FStreamableHandle> Handle = AssetManager.LoadPrimaryAsset(id);
-// 	if (Handle)
-// 	{
-// 		Handle->WaitUntilComplete(5, false);
-// 	}
-
-// 	UWeaponDefinition* WeaponDef = AssetManager.GetPrimaryAssetObject<UWeaponDefinition>(id);
-    
-// 	if (WeaponDef)
-// 	{
-// 		EquipWeapon(WeaponDef);
-// 	}
-// 	else
-// 	{
-// 		UE_LOG(LogTemp, Warning, TEXT("The Weapon was not loaded"));
-// 	}
-// }
 
 class UAbilitySystemComponent* AGameDevGameJamCharacter::GetAbilitySystemComponent() const 
 {
 	return AbilitySystemComponent;
 }
 
-void AGameDevGameJamCharacter::InitializeAttributes() 
+void AGameDevGameJamCharacter::AddStartupGameplayAbilities()
 {
-	if (AbilitySystemComponent && DefaultAttributeEffect)
-	{
-		FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
-		EffectContext.AddSourceObject(this);
-
-		FGameplayEffectSpecHandle SpecHandle = AbilitySystemComponent->MakeOutgoingSpec(DefaultAttributeEffect, 1, EffectContext);
-
-		if (SpecHandle.IsValid())
-		{
-			FActiveGameplayEffectHandle GEHandle = AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
-		}
-		
-	}
+	check(AbilitySystemComponent);
 	
+	if (GetLocalRole() == ROLE_Authority && !bAbilitiesInitialized)
+	{
+		// Grant abilities, but only on the server	
+		for (TSubclassOf<UGASGameplayAbility>& StartupAbility : GameplayAbilities)
+		{
+			AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(StartupAbility, GetCharacterLevel(), INDEX_NONE, this));
+		}
+
+		// Now apply passives
+		for (TSubclassOf<UGameplayEffect>& GameplayEffect : PassiveGameplayEffects)
+		{
+			FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
+			EffectContext.AddSourceObject(this);
+
+			FGameplayEffectSpecHandle NewHandle = AbilitySystemComponent->MakeOutgoingSpec(GameplayEffect, GetCharacterLevel(), EffectContext);
+			if (NewHandle.IsValid())
+			{
+				FActiveGameplayEffectHandle ActiveGEHandle = AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(*NewHandle.Data.Get(), AbilitySystemComponent);
+			}
+		}
+
+		bAbilitiesInitialized = true;
+	}
 }
 
-void AGameDevGameJamCharacter::GiveAbilities() 
+void AGameDevGameJamCharacter::RemoveStartupGameplayAbilities()
 {
-	if (HasAuthority() && AbilitySystemComponent)
+	check(AbilitySystemComponent);
+
+	if (GetLocalRole() == ROLE_Authority && bAbilitiesInitialized)
 	{
-		for (TSubclassOf<UGASGameplayAbility>& StartupAbility : DefaultAbilities)
+		// Remove any abilities added from a previous call
+		TArray<FGameplayAbilitySpecHandle> AbilitiesToRemove;
+		for (const FGameplayAbilitySpec& Spec : AbilitySystemComponent->GetActivatableAbilities())
 		{
-			AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(StartupAbility, 1, static_cast<int32>(StartupAbility.GetDefaultObject()->AbilityInputID), this));
+			if ((Spec.SourceObject == this) && GameplayAbilities.Contains(Spec.Ability->GetClass()))
+			{
+				AbilitiesToRemove.Add(Spec.Handle);
+			}
 		}
-		
+
+		// Do in two passes so the removal happens after we have the full list
+		for (int32 i = 0; i < AbilitiesToRemove.Num(); i++)
+		{
+			AbilitySystemComponent->ClearAbility(AbilitiesToRemove[i]);
+		}
+
+		// Remove all of the passive gameplay effects that were applied by this character
+		FGameplayEffectQuery Query;
+		Query.EffectSource = this;
+		AbilitySystemComponent->RemoveActiveEffects(Query);
+
+		bAbilitiesInitialized = false;
 	}
-	
 }
 
-void AGameDevGameJamCharacter::PossessedBy(AController* NewController) 
+void AGameDevGameJamCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
-	//Server GAS Init
-	AbilitySystemComponent->InitAbilityActorInfo(this, this);
-
-	InitializeAttributes();
-	GiveAbilities();
-}
-
-void AGameDevGameJamCharacter::OnRep_PlayerState() 
-{
-	Super::OnRep_PlayerState();
-
-	InitializeAttributes();
-
+	// Initialize our abilities
 	if (AbilitySystemComponent)
 	{
 		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+		AddStartupGameplayAbilities();
+	}
+}
 
-		if (InputComponent)
+void AGameDevGameJamCharacter::OnRep_Controller()
+{
+	Super::OnRep_Controller();
+
+	// Our controller changed, must update ActorInfo on AbilitySystemComponent
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->RefreshAbilityActorInfo();
+	}
+}
+
+void AGameDevGameJamCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AGameDevGameJamCharacter, CharacterLevel);
+}
+
+float AGameDevGameJamCharacter::GetHealth() const
+{
+	if (!AttributeSet)
+	return 1.f;
+
+	return AttributeSet->GetHealth();
+}
+
+float AGameDevGameJamCharacter::GetMaxHealth() const
+{
+	return AttributeSet->GetMaxHealth();
+}
+
+float AGameDevGameJamCharacter::GetMana() const
+{
+	return AttributeSet->GetMana();
+}
+
+float AGameDevGameJamCharacter::GetMaxMana() const
+{
+	return AttributeSet->GetMaxMana();
+}
+
+float AGameDevGameJamCharacter::GetMoveSpeed() const
+{
+	return AttributeSet->GetMoveSpeed();
+}
+
+int32 AGameDevGameJamCharacter::GetCharacterLevel() const
+{
+	return CharacterLevel;
+}
+
+bool AGameDevGameJamCharacter::SetCharacterLevel(int32 NewLevel)
+{
+	if (CharacterLevel != NewLevel && NewLevel > 0)
+	{
+		// Our level changed so we need to refresh abilities
+		RemoveStartupGameplayAbilities();
+		CharacterLevel = NewLevel;
+		AddStartupGameplayAbilities();
+
+		return true;
+	}
+	return false;
+}
+
+bool AGameDevGameJamCharacter::ActivateAbilitiesWithTags(FGameplayTagContainer AbilityTags, bool bAllowRemoteActivation)
+{
+	if (AbilitySystemComponent)
+	{
+		return AbilitySystemComponent->TryActivateAbilitiesByTag(AbilityTags, bAllowRemoteActivation);
+	}
+
+	return false;
+}
+
+void AGameDevGameJamCharacter::GetActiveAbilitiesWithTags(FGameplayTagContainer AbilityTags, TArray<UGASGameplayAbility*>& ActiveAbilities)
+{
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->GetActiveAbilitiesWithTags(AbilityTags, ActiveAbilities);
+	}
+}
+
+bool AGameDevGameJamCharacter::GetCooldownRemainingForTag(FGameplayTagContainer CooldownTags, float& TimeRemaining, float& CooldownDuration)
+{
+	if (AbilitySystemComponent && CooldownTags.Num() > 0)
+	{
+		TimeRemaining = 0.f;
+		CooldownDuration = 0.f;
+
+		FGameplayEffectQuery const Query = FGameplayEffectQuery::MakeQuery_MatchAnyOwningTags(CooldownTags);
+		TArray< TPair<float, float> > DurationAndTimeRemaining = AbilitySystemComponent->GetActiveEffectsTimeRemainingAndDuration(Query);
+		if (DurationAndTimeRemaining.Num() > 0)
 		{
-			const FGameplayAbilityInputBinds Binds("Confirm", "Cancel", "EGASAbilityInputID", static_cast<int32>(EGASAbilityInputID::Confirm), static_cast<int32>(EGASAbilityInputID::Cancel));
+			int32 BestIdx = 0;
+			float LongestTime = DurationAndTimeRemaining[0].Key;
+			for (int32 Idx = 1; Idx < DurationAndTimeRemaining.Num(); ++Idx)
+			{
+				if (DurationAndTimeRemaining[Idx].Key > LongestTime)
+				{
+					LongestTime = DurationAndTimeRemaining[Idx].Key;
+					BestIdx = Idx;
+				}
+			}
 
-			AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
+			TimeRemaining = DurationAndTimeRemaining[BestIdx].Key;
+			CooldownDuration = DurationAndTimeRemaining[BestIdx].Value;
+
+			return true;
 		}
-		
 	}
-	
+	return false;
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Input
-
-void AGameDevGameJamCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+FGenericTeamId AGameDevGameJamCharacter::GetGenericTeamId() const
 {
-	// Set up gameplay key bindings
-	check(PlayerInputComponent);
-
-	PlayerInputComponent->BindAxis("MoveForward", this, &AGameDevGameJamCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &AGameDevGameJamCharacter::MoveRight);
-
-	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
-	// "turn" handles devices that provide an absolute delta, such as a mouse.
-	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("TurnRate", this, &AGameDevGameJamCharacter::TurnAtRate);
-	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("LookUpRate", this, &AGameDevGameJamCharacter::LookUpAtRate);
-
-	if (AbilitySystemComponent && InputComponent)
-	{
-		const FGameplayAbilityInputBinds Binds("Confirm", "Cancel", "EGASAbilityInputID", static_cast<int32>(EGASAbilityInputID::Confirm), static_cast<int32>(EGASAbilityInputID::Cancel));
-
-		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, Binds);
-	}
-}
-
-
-void AGameDevGameJamCharacter::TurnAtRate(float Rate)
-{
-	// calculate delta for this frame from the rate information
-	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
-}
-
-void AGameDevGameJamCharacter::LookUpAtRate(float Rate)
-{
-	// calculate delta for this frame from the rate information
-	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
-}
-
-void AGameDevGameJamCharacter::MoveForward(float Value)
-{
-	if ((Controller != nullptr) && (Value != 0.0f))
-	{
-		// find out which way is forward
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
-
-		// get forward vector
-		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		AddMovementInput(Direction, Value);
-	}
-}
-
-void AGameDevGameJamCharacter::MoveRight(float Value)
-{
-	if ( (Controller != nullptr) && (Value != 0.0f) )
-	{
-		// find out which way is right
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
-	
-		// get right vector 
-		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-		// add movement in that direction
-		AddMovementInput(Direction, Value);
-	}
+	static const FGenericTeamId PlayerTeam(0);
+	static const FGenericTeamId AITeam(1);
+	return Cast<APlayerController>(GetController()) ? PlayerTeam : AITeam;
 }

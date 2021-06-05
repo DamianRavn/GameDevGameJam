@@ -16,8 +16,4 @@ class GAMEDEVGAMEJAM_API UGASGameplayAbility : public UGameplayAbility
 	GENERATED_BODY()
 	
 	UGASGameplayAbility() {};
-
-public:
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Ability")
-	EGASAbilityInputID AbilityInputID = EGASAbilityInputID::None;
 };

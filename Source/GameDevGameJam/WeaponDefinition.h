@@ -24,7 +24,7 @@ public:
 	TSubclassOf<AActor> WeaponActor;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon, meta =(AssetBundles = "Game"))
-	TArray<TSoftClassPtr<UAnimMontage>> SwingAnimations;
+	TArray<TSoftObjectPtr<UAnimMontage>> SwingAnimations;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Weapon, meta =(AssetBundles = "Game"))
 	float BaseDamage;
